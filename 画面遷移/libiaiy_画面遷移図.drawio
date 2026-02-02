@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="ページ1" id="dJE3rFGvRF0NvAgFXY-f">
-        <mxGraphModel dx="713" dy="926" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="620" math="0" shadow="0">
+        <mxGraphModel dx="1146" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="620" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,7 +8,7 @@
                     <mxGeometry x="10" y="40" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="8GokivqYIVyeGA_FNf3_-2" value="メインメニュー" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="220" y="40" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="229" y="40" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="8GokivqYIVyeGA_FNf3_-3" value="司書メニュー" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="403" y="326" width="120" height="60" as="geometry"/>
@@ -34,7 +34,7 @@
                         <mxPoint x="250" y="240" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="8GokivqYIVyeGA_FNf3_-13" value="ログインせず" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="8GokivqYIVyeGA_FNf3_-12" connectable="0" vertex="1">
+                <mxCell id="8GokivqYIVyeGA_FNf3_-13" value="利用者ログイン" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="8GokivqYIVyeGA_FNf3_-12" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="8GokivqYIVyeGA_FNf3_-19" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="8GokivqYIVyeGA_FNf3_-3" target="8GokivqYIVyeGA_FNf3_-5" edge="1">
@@ -139,12 +139,12 @@
                 <mxCell id="8GokivqYIVyeGA_FNf3_-62" value="作業完了" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="8GokivqYIVyeGA_FNf3_-61" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="8GokivqYIVyeGA_FNf3_-64" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8GokivqYIVyeGA_FNf3_-57" target="8GokivqYIVyeGA_FNf3_-2" edge="1">
+                <mxCell id="8GokivqYIVyeGA_FNf3_-64" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8GokivqYIVyeGA_FNf3_-57" target="8GokivqYIVyeGA_FNf3_-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="760" y="180"/>
                             <mxPoint x="760" y="20"/>
-                            <mxPoint x="280" y="20"/>
+                            <mxPoint x="70" y="20"/>
                         </Array>
                         <mxPoint x="770" y="178.63" as="sourcePoint"/>
                         <mxPoint x="870" y="178.63" as="targetPoint"/>
@@ -153,11 +153,11 @@
                 <mxCell id="8GokivqYIVyeGA_FNf3_-65" value="一定時間経過後" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="8GokivqYIVyeGA_FNf3_-64" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="8GokivqYIVyeGA_FNf3_-71" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8GokivqYIVyeGA_FNf3_-5" target="8GokivqYIVyeGA_FNf3_-3" edge="1">
+                <mxCell id="8GokivqYIVyeGA_FNf3_-71" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="8GokivqYIVyeGA_FNf3_-5" target="8GokivqYIVyeGA_FNf3_-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="668" y="400"/>
-                            <mxPoint x="463" y="400"/>
+                            <mxPoint x="70" y="400"/>
                         </Array>
                         <mxPoint x="683" y="409" as="sourcePoint"/>
                         <mxPoint x="463" y="409" as="targetPoint"/>
@@ -174,11 +174,11 @@
                 <mxCell id="2" value="利用者情報変更画面" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="608" y="532" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="2" target="8GokivqYIVyeGA_FNf3_-3" edge="1">
+                <mxCell id="9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="2" target="8GokivqYIVyeGA_FNf3_-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="668" y="600"/>
-                            <mxPoint x="463" y="600"/>
+                            <mxPoint x="70" y="600"/>
                         </Array>
                         <mxPoint x="693" y="513" as="sourcePoint"/>
                         <mxPoint x="473" y="420" as="targetPoint"/>
@@ -196,29 +196,29 @@
                 <mxCell id="12" value="利用者情報&lt;br&gt;変更選択" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="11" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="新規蔵書登録&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;画面&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="13" value="新規蔵書登録&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;画面&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="611" y="454" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="8GokivqYIVyeGA_FNf3_-3">
+                <mxCell id="14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="13" target="8GokivqYIVyeGA_FNf3_-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="671" y="520"/>
-                            <mxPoint x="463" y="520"/>
+                            <mxPoint x="70" y="520"/>
                         </Array>
                         <mxPoint x="693" y="597" as="sourcePoint"/>
                         <mxPoint x="473" y="420" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="作業完了" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="14">
+                <mxCell id="15" value="作業完了" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="14" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GokivqYIVyeGA_FNf3_-3" target="13">
+                <mxCell id="16" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="8GokivqYIVyeGA_FNf3_-3" target="13" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="533" y="390" as="sourcePoint"/>
                         <mxPoint x="633" y="390" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="17" value="新規蔵書登録選択" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="16">
+                <mxCell id="17" value="新規蔵書登録選択" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="16" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
