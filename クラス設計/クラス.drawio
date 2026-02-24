@@ -1,0 +1,19 @@
+<mxfile host="65bd71144e">
+    <diagram id="Xnta3bdlHxIQWv8bCw4N" name="ページ1">
+        <mxGraphModel dx="1202" dy="1049" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="620" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="9" value="Pool" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=20;horizontalStack=0;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" width="480" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Lane 1" style="swimlane;startSize=20;horizontal=0;html=1;" vertex="1" parent="9">
+                    <mxGeometry y="20" width="480" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Lane 2" style="swimlane;startSize=20;horizontal=0;html=1;" vertex="1" parent="9">
+                    <mxGeometry y="140" width="480" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
