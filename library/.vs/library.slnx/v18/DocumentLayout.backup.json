@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-11T04:13:56.544Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "EditorCaption": " [Design]"
             }
           ]
         }
