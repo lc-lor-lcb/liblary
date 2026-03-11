@@ -1,19 +1,25 @@
-利用者
+データベース設計の下書き
+# 利用者
 ID
 Name
 Gender
 Birth
 Mail
 Phone
-Adress
+Address
+CreatedAt
+IsActive
 
-司書
+# 司書
 ID
+UserName
 Name
 Mail
 Password
 
-蔵書
+※Passwordはハッシュ化したものを保存
+
+# 蔵書
 ID
 BookName
 Author
@@ -21,18 +27,18 @@ Publisher
 Genre
 Status
 ISBN
-IsLoaned
+IsReserved
 
-ログ
-ID
+# ログ
+ID    
 User_id(FK)
 Book_id(FK)
 LoanDate
 ReturnDue
 ReturnDate
 
-予約
+# 予約
 ID
 User_id(FK)
 Book_id(FK)
-ReservationDate 
+ReservationDate

@@ -83,9 +83,8 @@
   - user_id PK
   - name
   - birth_date
-  - gender
-  - caution_flag
-  - current_loan_count
+  - phonenumber
+  - address
 
 - `books`（書籍管理: 書籍タイトル単位）
   - book_master_id PK
@@ -192,9 +191,9 @@ API設計（抜粋・修正版）
 
 ## セキュリティ要点
 - パスワード: PBKDF2 でハッシュ保存
-- PINコード: 2016 でハッ## 今後の課題・TODO
+- PINコード: 2016 でハッシュ
 1. 各APIの詳細仕様（パラメータ、レスポンス例）をOpenAPI形式で作成
-2. 画面モックの詳細化（操作フロー）
+2. 画面モックの詳細化（操作フローシュ
 3. バックアップ・監視の具体的構成を決定
 4. Excel移行スクリプトの設計とテスト
 
