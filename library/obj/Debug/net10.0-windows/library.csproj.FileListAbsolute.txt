@@ -1,0 +1,6 @@
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.csproj.AssemblyReference.cache
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.AssemblyInfoInputs.cache
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.AssemblyInfo.cs
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.csproj.CoreCompileInputs.cache
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.sourcelink.json
