@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Services;
-using LibrarySystem.Presenter.Views;
+using library.Model.Services;
+using library.Presenter.Views;
 using NLog;
 
-namespace LibrarySystem.Presenter;
+namespace library.Presenter;
 
 /// <summary>
 /// 蔵書一覧・検索画面のPresenter。
@@ -53,7 +53,7 @@ public class BookListPresenter
                     return;
                 }
 
-                var book = _bookService.GetById(bookId);
+                var book = _bookService.GetByIdAsync(bookId);
                 _view.ShowBooks(book != null ? new[] { book } : Array.Empty<Model.Entities.Book>());
                 return;
             }
@@ -67,7 +67,7 @@ public class BookListPresenter
                 Statuses = _view.SearchStatuses?.ToList()
             };
 
-            var books = _bookService.Search(criteria);
+            var books = _bookService.SearchAsync(criteria);
             _view.ShowBooks(books);
 
             Logger.Info("蔵書検索実行: 件数={Count}", books.Count);

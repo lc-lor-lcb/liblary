@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\tsumu\\gittype\\liblary\\library\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\view\\completionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:view\\completionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\view\\completionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:view\\completionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\view\\checkoutform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:view\\checkoutform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\view\\booklistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:view\\booklistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\view\\usermanageform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:view\\usermanageform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\view\\bookregisterform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:view\\bookregisterform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\model\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:model\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,80 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CompletionForm.cs",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\CompletionForm.cs",
-              "RelativeDocumentMoniker": "View\\CompletionForm.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\CompletionForm.cs",
-              "RelativeToolTip": "View\\CompletionForm.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAgwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T07:01:18.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CompletionForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\CompletionForm.cs",
-              "RelativeDocumentMoniker": "View\\CompletionForm.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\CompletionForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "View\\CompletionForm.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Model\\Entities\\Book.cs",
+              "RelativeDocumentMoniker": "Model\\Entities\\Book.cs",
+              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Model\\Entities\\Book.cs",
+              "RelativeToolTip": "Model\\Entities\\Book.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T06:56:02.298Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CheckoutForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\CheckoutForm.cs",
-              "RelativeDocumentMoniker": "View\\CheckoutForm.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\CheckoutForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "View\\CheckoutForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T06:55:59.198Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BookListForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\BookListForm.cs",
-              "RelativeDocumentMoniker": "View\\BookListForm.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\BookListForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "View\\BookListForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T06:55:24.348Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserManageForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\UserManageForm.cs",
-              "RelativeDocumentMoniker": "View\\UserManageForm.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\UserManageForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "View\\UserManageForm.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T06:53:32.394Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BookRegisterForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\BookRegisterForm.Designer.cs",
-              "RelativeDocumentMoniker": "View\\BookRegisterForm.Designer.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\View\\BookRegisterForm.Designer.cs",
-              "RelativeToolTip": "View\\BookRegisterForm.Designer.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAiwF0AAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-12T06:38:41.624Z",
+              "WhenOpened": "2026-03-16T04:38:44.446Z",
               "EditorCaption": ""
             }
           ]

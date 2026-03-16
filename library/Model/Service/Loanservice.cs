@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Dto;
-using LibrarySystem.Model.Entities;
-using LibrarySystem.Model.Repositories;
+using library.Model.Dto;
+using library.Model.Entities;
+using library.Model.Repositories;
 
-namespace LibrarySystem.Model.Services;
+namespace library.Model.Services;
 
 /// <summary>貸出・返却処理サービスインターフェース</summary>
 public interface ILoanService
@@ -51,7 +51,7 @@ public class LoanService : ILoanService
     public async Task<LoanResult> CheckoutAsync(int bookId, int userId)
     {
         // ---- 1. 利用者の存在確認・IsActiveチェック ----
-        var user = await _userRepository.FindByIdAsync(userId);
+        var user = await _userRepository.GetByIdAsync(userId);
         if (user == null || !user.IsActive)
             return Fail("利用者IDが存在しないか、無効な利用者です。");
 

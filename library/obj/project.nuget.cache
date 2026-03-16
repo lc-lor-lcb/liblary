@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "k3mJP1clc6E=",
+  "dgSpecHash": "Gm9plr5Q840=",
   "success": true,
   "projectFilePath": "C:\\Users\\tsumu\\gittype\\liblary\\library\\library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tsumu\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\tsumu\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
+    "C:\\Users\\tsumu\\.nuget\\packages\\dapper\\2.1.72\\dapper.2.1.72.nupkg.sha512",
     "C:\\Users\\tsumu\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\tsumu\\.nuget\\packages\\microsoft.data.sqlclient\\6.1.4\\microsoft.data.sqlclient.6.1.4.nupkg.sha512",
     "C:\\Users\\tsumu\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\6.0.2\\microsoft.data.sqlclient.sni.runtime.6.0.2.nupkg.sha512",

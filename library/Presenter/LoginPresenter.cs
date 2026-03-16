@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Services;
-using LibrarySystem.Presenter.Views;
+using library.Model.Services;
+using library.Presenter.Views;
 using NLog;
 
-namespace LibrarySystem.Presenter;
+namespace library.Presenter;
 
 /// <summary>
 /// ログイン画面のPresenter。

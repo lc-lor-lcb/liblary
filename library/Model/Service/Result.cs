@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LibrarySystem.Model.Common;
+namespace library.Model.Common;
 
 /// <summary>
 /// 業務処理結果を表す汎用Resultパターン。

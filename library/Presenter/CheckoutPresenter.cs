@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Entities;
-using LibrarySystem.Model.Services;
-using LibrarySystem.Presenter.Views;
+using library.Model.Entities;
+using library.Model.Services;
+using library.Presenter.Views;
 using NLog;
 
-namespace LibrarySystem.Presenter;
+namespace library.Presenter;
 
 /// <summary>
 /// 蔵書貸し出し画面のPresenter（利用者が自己操作）。

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Entities;
+using library.Model.Entities;
 
-namespace LibrarySystem.Presenter.Views;
+namespace library.Presenter.Views;
 
 public interface ILoginView
 {

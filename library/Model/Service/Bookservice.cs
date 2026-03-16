@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Common;
-using LibrarySystem.Model.Dto;
-using LibrarySystem.Model.Entities;
-using LibrarySystem.Model.Repositories;
+using library.Model.Common;
+using library.Model.Dto;
+using library.Model.Entities;
+using library.Model.Repositories;
 
-namespace LibrarySystem.Model.Services;
+namespace library.Model.Services;
 
 /// <summary>蔵書検索・取得・新規登録サービスインターフェース</summary>
 public interface IBookService
@@ -40,7 +40,7 @@ public class BookService : IBookService
     /// <inheritdoc/>
     public async Task<Book?> GetByIdAsync(int bookId)
     {
-        return await _bookRepository.FindByIdAsync(bookId);
+        return await _bookRepository.GetByIdAsync(bookId);
     }
 
     /// <inheritdoc/>
@@ -52,7 +52,7 @@ public class BookService : IBookService
             return Result<Book>.Failure(validationError);
 
         // ISBN重複チェック
-        if (await _bookRepository.ExistsISBNAsync(dto.ISBN))
+        if (await _bookRepository.GetByIsbnAsync(dto.ISBN))
             return Result<Book>.Failure($"ISBN「{dto.ISBN}」は既に登録されています。");
 
         var book = new Book

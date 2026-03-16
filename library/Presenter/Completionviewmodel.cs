@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LibrarySystem.Presenter.Views;
+namespace library.Presenter.Views;
 
 public enum CompletionType
 {

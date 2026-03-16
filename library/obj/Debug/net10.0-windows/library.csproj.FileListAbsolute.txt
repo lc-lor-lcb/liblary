@@ -1,4 +1,14 @@
 C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.csproj.AssemblyReference.cache
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.BookListForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.BookRegisterForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.CheckoutForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.CompletionForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.LoginForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.MainForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.ReservationForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.ReturnForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.View.UserManageForm.resources
+C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.csproj.GenerateResource.cache
 C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.AssemblyInfoInputs.cache
 C:\Users\tsumu\gittype\liblary\library\obj\Debug\net10.0-windows\library.AssemblyInfo.cs

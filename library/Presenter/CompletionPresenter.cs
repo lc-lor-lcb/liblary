@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Presenter.Views;
+using library.Presenter.Views;
 using NLog;
 
-namespace LibrarySystem.Presenter;
+namespace library.Presenter;
 
 /// <summary>
 /// 操作完了画面のPresenter（全操作共通）。

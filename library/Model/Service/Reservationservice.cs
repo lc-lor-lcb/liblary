@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Dto;
-using LibrarySystem.Model.Entities;
-using LibrarySystem.Model.Repositories;
+using library.Model.Dto;
+using library.Model.Entities;
+using library.Model.Repositories;
 
-namespace LibrarySystem.Model.Services;
+namespace library.Model.Services;
 
 /// <summary>予約管理サービスインターフェース</summary>
 public interface IReservationService
@@ -44,12 +44,12 @@ public class ReservationService : IReservationService
     public async Task<ReservationResult> ReserveAsync(int bookId, int userId)
     {
         // ---- 1. 利用者確認 ----
-        var user = await _userRepository.FindByIdAsync(userId);
+        var user = await _userRepository.GetByIdAsync(userId);
         if (user == null || !user.IsActive)
             return Fail("利用者IDが存在しないか、無効な利用者です。");
 
         // ---- 2. 蔵書確認 ----
-        var book = await _bookRepository.FindByIdAsync(bookId);
+        var book = await _bookRepository.GetByIdAsync(bookId);
         if (book == null)
             return Fail("蔵書IDが存在しません。");
 

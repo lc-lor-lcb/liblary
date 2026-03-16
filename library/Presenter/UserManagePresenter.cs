@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using LibrarySystem.Model.Services;
-using LibrarySystem.Presenter.Views;
+using library.Model.Services;
+using library.Presenter.Views;
 using NLog;
 
-namespace LibrarySystem.Presenter;
+namespace library.Presenter;
 
 /// <summary>
 /// 利用者管理画面のPresenter（司書操作）。

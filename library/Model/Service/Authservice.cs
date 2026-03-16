@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Entities;
-using LibrarySystem.Model.Repositories;
+using library.Model.Entities;
+using library.Model.Repositories;
 using System.Security.Cryptography;
 
-namespace LibrarySystem.Model.Services;
+namespace library.Model.Services;
 
 /// <summary>司書認証・セッション管理サービスインターフェース</summary>
 public interface IAuthService
@@ -51,7 +51,7 @@ public class AuthService : IAuthService
         if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             return null;
 
-        var librarian = await _librarianRepository.FindByUserNameAsync(userName);
+        var librarian = await _librarianRepository.GetByUserNameAsync(userName);
 
         // レコードが存在しない・無効・パスワード不一致のいずれも同一メッセージ（列挙攻撃対策）
         if (librarian == null || !librarian.IsActive)

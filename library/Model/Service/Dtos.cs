@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LibrarySystem.Model.Dto;
+namespace library.Model.Dto;
 
 /// <summary>蔵書検索条件DTO</summary>
 public class BookSearchCriteria

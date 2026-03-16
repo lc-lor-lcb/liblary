@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibrarySystem.Model.Common;
-using LibrarySystem.Model.Dto;
-using LibrarySystem.Model.Entities;
-using LibrarySystem.Model.Repositories;
+using library.Model.Common;
+using library.Model.Dto;
+using library.Model.Entities;
+using library.Model.Repositories;
 using System.Text.RegularExpressions;
 
-namespace LibrarySystem.Model.Services;
+namespace library.Model.Services;
 
 /// <summary>利用者管理サービスインターフェース</summary>
 public interface IUserService
@@ -51,7 +51,7 @@ public class UserService : IUserService
             return Result<User>.Failure(validationError);
 
         // メールアドレス重複チェック
-        if (await _userRepository.ExistsMailAsync(dto.Mail))
+        if (await _userRepository.GetByMailAsync(dto.Mail))
             return Result<User>.Failure("このメールアドレスは既に登録されています。");
 
         var user = new User
@@ -73,7 +73,7 @@ public class UserService : IUserService
     /// <inheritdoc/>
     public async Task<Result<User>> UpdateUserAsync(int userId, UpdateUserDto dto)
     {
-        var existing = await _userRepository.FindByIdAsync(userId);
+        var existing = await _userRepository.GetByIdAsync(userId);
         if (existing == null || !existing.IsActive)
             return Result<User>.Failure("利用者IDが存在しないか、無効な利用者です。");
 
@@ -82,7 +82,7 @@ public class UserService : IUserService
             return Result<User>.Failure(validationError);
 
         // 他の利用者と重複するメールでないか確認（自分自身は除外）
-        if (await _userRepository.ExistsMailAsync(dto.Mail, excludeId: userId))
+        if (await _userRepository.GetByMailAsync(dto.Mail, excludeId: userId))
             return Result<User>.Failure("このメールアドレスは既に他の利用者に登録されています。");
 
         existing.Name = dto.Name.Trim();
@@ -108,7 +108,7 @@ public class UserService : IUserService
     /// <inheritdoc/>
     public async Task<User?> GetByIdAsync(int userId)
     {
-        return await _userRepository.FindByIdAsync(userId);
+        return await _userRepository.GetByIdAsync(userId);
     }
 
     // ----------------------------------------------------------------

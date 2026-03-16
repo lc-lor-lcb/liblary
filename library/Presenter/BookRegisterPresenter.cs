@@ -1,12 +1,12 @@
-﻿using LibrarySystem.Model.Dto;
-using LibrarySystem.Model.Services;
-using LibrarySystem.Presenter.Views;
+﻿using library.Model.Dto;
+using library.Model.Services;
+using library.Presenter.Views;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LibrarySystem.Presenter;
+namespace library.Presenter;
 
 /// <summary>
 /// 蔵書新規登録画面のPresenter。
