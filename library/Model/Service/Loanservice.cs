@@ -9,7 +9,7 @@ public interface ILoanService
     Task<LoanResult> CheckoutAsync(int bookId, int userId);
     Task<ReturnResult> ReturnAsync(int bookId, int userId);
     Task<IList<Log>> GetActiveLoansAsync(int userId);
-    Task<Log?> GetActiveLoanByBookAsync(int bookId);   // ← 追加
+    Task<Log?> GetActiveLoanByBookAsync(int bookId);
 }
 
 public class LoanService : ILoanService
@@ -69,9 +69,16 @@ public class LoanService : ILoanService
         bool isReserved = book.IsReserved;
         if (book.Status == BookStatus.Reserved && book.IsReserved)
         {
-            var reservation = await _reservationRepository.ExistsActiveAsync(bookId, userId);
-            if (reservation != null)
-                await _reservationRepository.UpdateStatusAsync(reservation.Id, 1);
+            // ★ ExistsActiveAsync は bool を返すので bool で受ける
+            bool reservationExists = await _reservationRepository.ExistsActiveAsync(userId, bookId);
+            if (reservationExists)
+            {
+                // 予約レコードをIDで取得してステータス更新
+                var reservation = await _reservationRepository.GetByIdAsync(
+                    await GetActiveReservationIdAsync(bookId, userId));
+                if (reservation != null)
+                    await _reservationRepository.UpdateStatusAsync(reservation.Id, 1);
+            }
             isReserved = false;
         }
 
@@ -87,11 +94,10 @@ public class LoanService : ILoanService
         if (log == null)
             return ReturnFail("該当する貸出記録が見つかりません。利用者IDと蔵書IDを確認してください。");
 
-        // ★ 修正: GetActiveByBookIdAsync は Reservation? を返すため bool ではなく null チェック
         var nextReservation = await _reservationRepository.GetActiveByBookIdAsync(bookId);
         bool hasReservation = nextReservation != null;
 
-        if (hasReservation && nextReservation != null)
+        if (nextReservation != null)
             await _reservationRepository.SetNotifiedAsync(nextReservation.Id);
 
         await _logRepository.ReturnAsync(log.Id, DateTime.Now);
@@ -114,8 +120,12 @@ public class LoanService : ILoanService
     public async Task<IList<Log>> GetActiveLoansAsync(int userId)
         => await _logRepository.GetActiveLoansAsync(userId);
 
-    public async Task<Log?> GetActiveLoanByBookAsync(int bookId)   // ← 追加
+    public async Task<Log?> GetActiveLoanByBookAsync(int bookId)
         => await _logRepository.GetActiveLoanByBookAsync(bookId);
+
+    // ----------------------------------------------------------------
+    // ヘルパー
+    // ----------------------------------------------------------------
 
     private async Task<(bool, string?)> CheckLoanable(Book book, int userId)
     {
@@ -131,10 +141,22 @@ public class LoanService : ILoanService
 
     private async Task<(bool, string?)> CheckReservedBook(Book book, int userId)
     {
-        var reservation = await _reservationRepository.ExistsActiveAsync(book.Id, userId);
-        return reservation != null
+        // ★ ExistsActiveAsync(userId, bookId) の引数順に注意
+        bool exists = await _reservationRepository.ExistsActiveAsync(userId, book.Id);
+        return exists
             ? (true, null)
             : (false, "この蔵書は別の利用者に予約されています。");
+    }
+
+    /// <summary>
+    /// ExistsActiveAsync が bool のみ返すため、予約IDを特定する際に
+    /// GetByUserIdAsync 経由で取得する。
+    /// </summary>
+    private async Task<int> GetActiveReservationIdAsync(int bookId, int userId)
+    {
+        var userReservations = await _reservationRepository.GetByUserIdAsync(userId);
+        var target = userReservations.FirstOrDefault(r => r.BookId == bookId && r.Status == 0);
+        return target?.Id ?? 0;
     }
 
     private static LoanResult Fail(string m) => new() { IsSuccess = false, ErrorMessage = m };
