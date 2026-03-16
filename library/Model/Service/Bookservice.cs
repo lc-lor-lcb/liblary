@@ -9,7 +9,7 @@ public interface IBookService
 {
     Task<IList<Book>> SearchAsync(BookSearchCriteria criteria);
     Task<Book?> GetByIdAsync(int bookId);
-    Task<Book?> GetByIsbnAsync(string isbn);   // ← 追加
+    Task<Book?> GetByIsbnAsync(string isbn);
     Task<Result<Book>> RegisterAsync(BookRegisterDto dto);
 }
 
@@ -28,7 +28,7 @@ public class BookService : IBookService
     public async Task<Book?> GetByIdAsync(int bookId)
         => await _bookRepository.GetByIdAsync(bookId);
 
-    public async Task<Book?> GetByIsbnAsync(string isbn)       // ← 追加
+    public async Task<Book?> GetByIsbnAsync(string isbn)
         => await _bookRepository.GetByIsbnAsync(isbn);
 
     public async Task<Result<Book>> RegisterAsync(BookRegisterDto dto)
@@ -46,13 +46,18 @@ public class BookService : IBookService
             Author = dto.Author.Trim(),
             Publisher = dto.Publisher.Trim(),
             Genre = dto.Genre.Trim(),
-            Isbn = dto.ISBN.Trim(),   // Book.Isbn（小文字n）に統一
+            Isbn = dto.ISBN.Trim(),
             Status = BookStatus.Available,
             IsLoaned = false,
             IsReserved = false,
         };
 
-        var inserted = await _bookRepository.InsertAsync(book);
+        // ★ InsertAsync は int(ID) を返すので、IDで取得し直す
+        var insertedId = await _bookRepository.InsertAsync(book);
+        var inserted = await _bookRepository.GetByIdAsync(insertedId);
+        if (inserted == null)
+            return Result<Book>.Failure("蔵書の登録に失敗しました。");
+
         return Result<Book>.Success(inserted);
     }
 

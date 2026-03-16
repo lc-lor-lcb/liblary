@@ -1,9 +1,10 @@
 ﻿using library.Model.Entities;
 using library.Model.Services;
-using library.Presenter.Views;
+using library.Views.Interfaces;  // ← 修正
 using NLog;
 
 namespace library.Presenter;
+// 以降は変更なし
 
 public class CheckoutPresenter
 {

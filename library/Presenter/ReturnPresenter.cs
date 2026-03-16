@@ -1,5 +1,6 @@
 ﻿using library.Model.Services;
-using library.Presenter.Views;
+using library.Model.Entities;
+using library.Views.Interfaces;  // ← 修正
 using NLog;
 
 namespace library.Presenter;

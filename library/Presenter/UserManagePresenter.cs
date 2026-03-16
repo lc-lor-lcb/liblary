@@ -3,6 +3,7 @@ using library.Model.Services;
 using library.Presenter.Views;
 using NLog;
 using System.Text.RegularExpressions;
+using library.Views.Interfaces;  // ← 修正
 
 namespace library.Presenter;
 

@@ -1,5 +1,4 @@
-﻿// Presenter/Views/IReservationView.cs
-namespace library.Views.Interfaces;
+﻿namespace library.Views.Interfaces;
 
 public interface IReservationView
 {
@@ -8,5 +7,5 @@ public interface IReservationView
 
     void ShowError(string message);
     void ShowReturnDueDate(DateTime? returnDue);
-    void NavigateToCompletion();                  // ← 引数なしに変更
+    void NavigateToCompletion();
 }

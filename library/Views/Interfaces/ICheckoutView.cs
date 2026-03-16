@@ -1,5 +1,4 @@
-﻿// Presenter/Views/ICheckoutView.cs
-namespace library.Views.Interfaces;
+﻿namespace library.Views.Interfaces;
 
 public interface ICheckoutView
 {
@@ -8,6 +7,6 @@ public interface ICheckoutView
 
     void ShowError(string message);
     void ShowWarning(string message);
-    void NavigateToCompletion();                  // ← 引数なしに変更
+    void NavigateToCompletion();
     void NavigateToReservation(int bookId);
 }

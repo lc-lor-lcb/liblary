@@ -1,5 +1,4 @@
-﻿// Presenter/Views/IBookRegisterView.cs
-namespace library.Views.Interfaces;
+﻿namespace library.Views.Interfaces;
 
 public interface IBookRegisterView
 {
@@ -10,6 +9,6 @@ public interface IBookRegisterView
     string ISBN { get; }
 
     void ShowError(string message);
-    void NavigateToCompletion();                  // ← 引数なしに変更
+    void NavigateToCompletion();
     void Close();
 }

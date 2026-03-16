@@ -48,8 +48,8 @@ public class ReservationService : IReservationService
         if (book.Status == BookStatus.Available)
             return Fail("この蔵書は現在在庫があります。予約不要です。");
 
-        var existing = await _reservationRepository.ExistsActiveAsync(bookId, userId);
-        if (existing != null)
+        bool alreadyReserved = await _reservationRepository.ExistsActiveAsync(userId, bookId);
+        if (alreadyReserved)
             return Fail("この蔵書は既に予約済みです。");
 
         // 現在の返却期限日取得
