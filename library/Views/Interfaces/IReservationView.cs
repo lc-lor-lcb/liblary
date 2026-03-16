@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Presenter/Views/IReservationView.cs
+namespace library.Views.Interfaces;
 
-namespace library.UI.Interfaces;
-
-public interface IReturnView
+public interface IReservationView
 {
     string UserId { get; }
     string BookId { get; }
 
-    event EventHandler ReturnClicked;
-
     void ShowError(string message);
-    void NavigateToCompletion();
+    void ShowReturnDueDate(DateTime? returnDue);
+    void NavigateToCompletion();                  // ← 引数なしに変更
 }
