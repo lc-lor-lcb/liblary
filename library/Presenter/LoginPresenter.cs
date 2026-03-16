@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using library.Model.Services;
+﻿using library.Model.Services;
 using library.Presenter.Views;
 using NLog;
 
 namespace library.Presenter;
 
-/// <summary>
-/// ログイン画面のPresenter。
-/// 入力バリデーション・認証呼び出し・画面遷移を担当する。
-/// </summary>
 public class LoginPresenter
 {
     private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
@@ -24,32 +17,20 @@ public class LoginPresenter
         _authService = authService ?? throw new ArgumentNullException(nameof(authService));
     }
 
-    /// <summary>
-    /// ログインボタン押下時に呼び出す。
-    /// </summary>
-    public void OnLoginClicked()
+    public async void OnLoginClicked()
     {
         try
         {
-            // --- バリデーション ---
             if (string.IsNullOrWhiteSpace(_view.UserName))
-            {
-                _view.ShowError("ログインIDを入力してください。");
-                return;
-            }
+            { _view.ShowError("ログインIDを入力してください。"); return; }
 
             if (string.IsNullOrWhiteSpace(_view.Password))
-            {
-                _view.ShowError("パスワードを入力してください。");
-                return;
-            }
+            { _view.ShowError("パスワードを入力してください。"); return; }
 
-            // --- 認証 ---
-            var librarian = _authService.Login(_view.UserName, _view.Password);
+            var librarian = await _authService.LoginAsync(_view.UserName, _view.Password);
 
             if (librarian == null)
             {
-                // どちらが誤りか特定できないメッセージにする（セキュリティ要件）
                 _view.ShowError("IDまたはパスワードが正しくありません。");
                 Logger.Warn("ログイン失敗: UserName={UserName}", _view.UserName);
                 return;

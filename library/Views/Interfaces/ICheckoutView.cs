@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace library.UI.Interfaces;
+﻿// Presenter/Views/ICheckoutView.cs
+namespace library.Views.Interfaces;
 
 public interface ICheckoutView
 {
     string UserId { get; }
     string BookId { get; }
 
-    event EventHandler CheckoutClicked;
-
     void ShowError(string message);
     void ShowWarning(string message);
-    void NavigateToCompletion();
+    void NavigateToCompletion();                  // ← 引数なしに変更
     void NavigateToReservation(int bookId);
 }

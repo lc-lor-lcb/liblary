@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System;
+﻿// Presenter/Views/IBookRegisterView.cs
+namespace library.Views.Interfaces;
 
-namespace library.Model.Entities;
 public interface IBookRegisterView
 {
     string BookName { get; }
@@ -11,9 +9,7 @@ public interface IBookRegisterView
     string Genre { get; }
     string ISBN { get; }
 
-    event EventHandler RegisterClicked;
-    event EventHandler CancelClicked;
-
     void ShowError(string message);
-    void NavigateToCompletion();
+    void NavigateToCompletion();                  // ← 引数なしに変更
+    void Close();
 }

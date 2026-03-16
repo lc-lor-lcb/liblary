@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using library.Model.Services;
 using library.Presenter.Views;
 using NLog;
+using library.Model.Dto;
+using library.Model.Entities;
+using library.Model.Repositories;
 
 namespace library.Presenter;
 
@@ -27,20 +32,20 @@ public class BookListPresenter
     /// <summary>
     /// 画面初期表示時に呼び出す。全件を表示する。
     /// </summary>
-    public void OnLoad()
+    public async void OnLoad()
     {
-        ExecuteSearch();
+        await ExecuteSearch();
     }
 
     /// <summary>
     /// 検索ボタン押下時に呼び出す。
     /// </summary>
-    public void OnSearchClicked()
+    public async void OnSearchClicked()
     {
-        ExecuteSearch();
+        await ExecuteSearch();
     }
 
-    private void ExecuteSearch()
+    private async Task ExecuteSearch()
     {
         try
         {
@@ -53,8 +58,8 @@ public class BookListPresenter
                     return;
                 }
 
-                var book = _bookService.GetByIdAsync(bookId);
-                _view.ShowBooks(book != null ? new[] { book } : Array.Empty<Model.Entities.Book>());
+                var book = await _bookService.GetByIdAsync(bookId);
+                _view.ShowBooks(book != null ? new List<Book> { book } : new List<Book>());
                 return;
             }
 
@@ -64,10 +69,10 @@ public class BookListPresenter
                 Author = _view.SearchAuthor?.Trim(),
                 Publisher = _view.SearchPublisher?.Trim(),
                 Genre = _view.SearchGenre?.Trim(),
-                Statuses = _view.SearchStatuses?.ToList()
+                Statuses = _view.SearchStatuses?.Select(s => (byte)s).ToList()
             };
 
-            var books = _bookService.SearchAsync(criteria);
+            var books = await _bookService.SearchAsync(criteria);
             _view.ShowBooks(books);
 
             Logger.Info("蔵書検索実行: 件数={Count}", books.Count);

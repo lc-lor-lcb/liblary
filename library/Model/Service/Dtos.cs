@@ -4,15 +4,15 @@ using System.Text;
 namespace library.Model.Dto;
 
 /// <summary>蔵書検索条件DTO</summary>
-public class BookSearchCriteria
-{
-    public string? BookName { get; set; }
-    public string? Author { get; set; }
-    public string? Publisher { get; set; }
-    public string? Genre { get; set; }
-    public IList<byte>? Statuses { get; set; }
-    public int? BookId { get; set; }
-}
+//public class BookSearchCriteria
+//{
+//public string? BookName { get; set; }
+//public string? Author { get; set; }
+//public string? Publisher { get; set; }
+//public string? Genre { get; set; }
+//public IList<byte>? Statuses { get; set; }
+//public int? BookId { get; set; }
+//}
 
 /// <summary>蔵書新規登録DTO</summary>
 public class BookRegisterDto

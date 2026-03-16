@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Presenter/Views/IReturnView.cs
+namespace library.Views.Interfaces;
 
-namespace library.UI.Interfaces;
-
-public interface IReservationView
+public interface IReturnView
 {
     string UserId { get; }
     string BookId { get; }
 
-    event EventHandler ReserveClicked;
-
-    void ShowReturnDue(string returnDue);
     void ShowError(string message);
-    void NavigateToCompletion();
+    void NavigateToCompletion();                  // ← 引数なしに変更
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text;
 using Dapper;
 using library.Model;
 using library.Model.Entities;
@@ -130,7 +129,7 @@ public sealed class BookRepository : IBookRepository
             book.Author,
             book.Publisher,
             book.Genre,
-            book.ISBN,
+            book.Isbn,
             book.Status,
             book.IsLoaned,
             book.IsReserved

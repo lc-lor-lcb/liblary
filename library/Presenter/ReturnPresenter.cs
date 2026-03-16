@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using library.Model.Services;
+﻿using library.Model.Services;
 using library.Presenter.Views;
 using NLog;
 
 namespace library.Presenter;
 
-/// <summary>
-/// 蔵書返却画面のPresenter（利用者が自己操作）。
-/// 返却処理・予約確認表示・完了画面遷移を担当する。
-/// </summary>
 public class ReturnPresenter
 {
     private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
@@ -24,19 +17,14 @@ public class ReturnPresenter
         _loanService = loanService ?? throw new ArgumentNullException(nameof(loanService));
     }
 
-    /// <summary>
-    /// 返却ボタン押下時に呼び出す。
-    /// </summary>
-    public void OnReturnClicked()
+    public async void OnReturnClicked()
     {
         try
         {
-            // --- 入力バリデーション ---
             if (!TryParseIds(out int userId, out int bookId))
                 return;
 
-            // --- 返却処理 ---
-            var result = _loanService.Return(bookId, userId);
+            var result = await _loanService.ReturnAsync(bookId, userId);
             if (!result.IsSuccess)
             {
                 _view.ShowError(result.ErrorMessage ?? "返却処理に失敗しました。");
@@ -44,12 +32,9 @@ public class ReturnPresenter
             }
 
             Logger.Info("返却成功: UserId={UserId}, BookId={BookId}, HasReservation={HasReservation}",
-                userId, bookId, result.Value!.HasNextReservation);
+                userId, bookId, result.HasNextReservation);
 
-            _view.NavigateToCompletion(new CompletionViewModel
-            {
-                CompletionType = CompletionType.Return
-            });
+            _view.NavigateToCompletion();
         }
         catch (Exception ex)
         {
@@ -60,30 +45,17 @@ public class ReturnPresenter
 
     private bool TryParseIds(out int userId, out int bookId)
     {
-        userId = 0;
-        bookId = 0;
+        userId = 0; bookId = 0;
 
         if (string.IsNullOrWhiteSpace(_view.UserId))
-        {
-            _view.ShowError("利用者IDを入力してください。");
-            return false;
-        }
+        { _view.ShowError("利用者IDを入力してください。"); return false; }
         if (!int.TryParse(_view.UserId, out userId) || userId <= 0)
-        {
-            _view.ShowError("利用者IDは正の整数で入力してください。");
-            return false;
-        }
+        { _view.ShowError("利用者IDは正の整数で入力してください。"); return false; }
 
         if (string.IsNullOrWhiteSpace(_view.BookId))
-        {
-            _view.ShowError("蔵書IDを入力してください。");
-            return false;
-        }
+        { _view.ShowError("蔵書IDを入力してください。"); return false; }
         if (!int.TryParse(_view.BookId, out bookId) || bookId <= 0)
-        {
-            _view.ShowError("蔵書IDは正の整数で入力してください。");
-            return false;
-        }
+        { _view.ShowError("蔵書IDは正の整数で入力してください。"); return false; }
 
         return true;
     }
