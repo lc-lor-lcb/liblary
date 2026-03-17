@@ -11,7 +11,7 @@ namespace library.Model.Repositories;
 /// <summary>
 /// 貸出ログデータアクセス実装（Dapper）
 /// </summary>
-public sealed class LogRepository : ILogRepository
+public sealed class LogRepository : ILogRepository  // ★ 修正: Ilogrepository → ILogRepository
 {
     private readonly IDbConnectionFactory _connectionFactory;
 
@@ -142,5 +142,25 @@ public sealed class LogRepository : ILogRepository
         // SQL Server の DATE 型は Dapper で DateOnly にマップされる (.NET 6+)
         var result = await conn.ExecuteScalarAsync<DateOnly?>(sql, new { BookId = bookId });
         return result;
+    }
+
+    // -------------------------------------------------------------------------
+    // GetActiveLoanByBookAsync  ★ インターフェース追加メソッド
+    // 指定蔵書の貸出中レコード（ReturnDate IS NULL）を返す。
+    // 複数レコードが存在する場合は最新の LoanDate のものを返す。
+    // -------------------------------------------------------------------------
+    public async Task<Log?> GetActiveLoanByBookAsync(int bookId)
+    {
+        const string sql = @"
+            SELECT TOP 1
+                   ID, User_id AS UserId, Book_id AS BookId,
+                   LoanDate, ReturnDue, ReturnDate
+            FROM   logs
+            WHERE  Book_id    = @BookId
+              AND  ReturnDate IS NULL
+            ORDER BY LoanDate DESC";
+
+        using var conn = _connectionFactory.Create();
+        return await conn.QuerySingleOrDefaultAsync<Log>(sql, new { BookId = bookId });
     }
 }

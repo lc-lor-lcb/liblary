@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\tsumu\\gittype\\liblary\\library\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\model\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:model\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|c:\\users\\tsumu\\gittype\\liblary\\library\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1168D4AB-89A0-4CF0-09F5-EFEF39F8B368}|library.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Book.cs",
-              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Model\\Entities\\Book.cs",
-              "RelativeDocumentMoniker": "Model\\Entities\\Book.cs",
-              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\Model\\Entities\\Book.cs",
-              "RelativeToolTip": "Model\\Entities\\Book.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T04:38:44.446Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tsumu\\gittype\\liblary\\library\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\tsumu\\gittype\\liblary\\library\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-17T08:05:57.977Z",
               "EditorCaption": ""
             }
           ]

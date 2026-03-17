@@ -1,20 +1,15 @@
-// library.UI/Program.cs
 using library;
-using library.View;
 using library.Model;
-using library.Model.Repositories;
 using library.Model.Repositories;
 using library.Model.Services;
 using library.Presenter;
-using library.UI;
-using library.UI.Views;
+using library.View;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using NLog;
 using System;
 using System.Windows.Forms;
 
-namespace library.library.UI
+namespace library.UI
 {
     internal static class Program
     {
@@ -23,10 +18,8 @@ namespace library.library.UI
         [STAThread]
         static void Main()
         {
-            // Windows Forms の高DPI対応設定（.NET 10）
             ApplicationConfiguration.Initialize();
 
-            // 未処理例外ハンドラの登録
             Application.ThreadException += OnThreadException;
             AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
@@ -35,12 +28,10 @@ namespace library.library.UI
             {
                 Logger.Info("図書管理システム 起動開始");
 
-                // DIコンテナ構築
                 var services = new ServiceCollection();
                 ConfigureServices(services);
                 var provider = services.BuildServiceProvider();
 
-                // ログイン画面を起動
                 var loginForm = provider.GetRequiredService<LoginForm>();
                 Application.Run(loginForm);
 
@@ -61,13 +52,9 @@ namespace library.library.UI
             }
         }
 
-        /// <summary>
-        /// DIサービス登録
-        /// </summary>
         private static void ConfigureServices(IServiceCollection services)
         {
             // --- Model ---
-            // DB接続設定（appsettings.json から読み込み）
             services.AddSingleton<IDbConnectionFactory, SqlServerConnectionFactory>();
 
             // --- Repositories ---
@@ -84,8 +71,8 @@ namespace library.library.UI
             services.AddScoped<IReservationService, ReservationService>();
             services.AddScoped<IUserService, UserService>();
 
-            // --- Session（インメモリ、シングルトン）---
-            services.AddSingleton<ISessionContext, SessionContext>();
+            // --- Session ---
+            //services.AddSingleton<ISessionContext, SessionContext>();    //DB接続
 
             // --- Presenters ---
             services.AddTransient<LoginPresenter>();
@@ -109,9 +96,6 @@ namespace library.library.UI
             services.AddTransient<UserManageForm>();
         }
 
-        /// <summary>
-        /// UIスレッド上の未処理例外ハンドラ
-        /// </summary>
         private static void OnThreadException(object sender, ThreadExceptionEventArgs e)
         {
             Logger.Error(e.Exception, "UIスレッドで未処理の例外が発生しました");
@@ -122,9 +106,6 @@ namespace library.library.UI
                 MessageBoxIcon.Error);
         }
 
-        /// <summary>
-        /// バックグラウンドスレッドの未処理例外ハンドラ
-        /// </summary>
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;
@@ -140,5 +121,4 @@ namespace library.library.UI
             }
         }
     }
-}
 }

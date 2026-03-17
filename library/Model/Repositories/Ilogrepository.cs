@@ -6,7 +6,7 @@ namespace library.Model.Repositories;
 public interface ILogRepository
 {
     // --- 既存メソッド（変更なし・そのまま残す） ---
-    Task InsertAsync(Log log);
+    Task<long> InsertAsync(Log log);
     Task<Log?> GetActiveLoanAsync(int bookId, int userId);
     Task<IList<Log>> GetActiveLoansAsync(int userId);
     Task<int> GetActiveLoanCountAsync(int userId);

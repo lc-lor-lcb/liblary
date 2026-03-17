@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace library.UI.Interfaces;
+﻿namespace library.Views.Interfaces;
 
 public interface ICompletionView
 {
-    event EventHandler BackToTopClicked;
-
+    event EventHandler? BackToTopClicked;
     void StartCountdown(int seconds);
     void NavigateToTop();
 }
