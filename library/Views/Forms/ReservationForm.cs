@@ -5,7 +5,6 @@ using LibrarySystem.Model.Services;
 using LibrarySystem.Presenter;
 using LibrarySystem.Presenter.Views;
 using System;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace library.View;
@@ -75,7 +74,7 @@ public partial class ReservationForm : Form, IReservationView
     // -------------------------------------------------------
     private void ReservationForm_Load(object sender, EventArgs e)
     {
-        string connStr = ConfigurationManager.ConnectionStrings["LibraryDB"].ConnectionString;
+        string connStr = ConnectionConfig.ConnectionString;
         var factory = new SqlConnectionFactory(connStr);
         var bookRepo = new BookRepository(factory);
         var logRepo = new LogRepository(factory);
@@ -85,4 +84,4 @@ public partial class ReservationForm : Form, IReservationView
 
         _ = new ReservationPresenter(this, reservationService, _prefilledBookId);
     }
-}
+}   

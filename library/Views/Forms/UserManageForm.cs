@@ -7,7 +7,6 @@ using LibrarySystem.Presenter.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace library.View;
@@ -127,7 +126,7 @@ public partial class UserManageForm : Form, IUserManageView
     // -------------------------------------------------------
     private void UserManageForm_Load(object sender, EventArgs e)
     {
-        string connStr = ConfigurationManager.ConnectionStrings["LibraryDB"].ConnectionString;
+        string connStr = ConnectionConfig.ConnectionString;
         var factory = new SqlConnectionFactory(connStr);
         var userRepo = new UserRepository(factory);
         var userService = new UserService(userRepo);

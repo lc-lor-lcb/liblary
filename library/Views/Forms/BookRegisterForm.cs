@@ -5,7 +5,6 @@ using LibrarySystem.Model.Services;
 using LibrarySystem.Presenter;
 using LibrarySystem.Presenter.Views;
 using System;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace library.View;
@@ -61,7 +60,7 @@ public partial class BookRegisterForm : Form, IBookRegisterView
     // -------------------------------------------------------
     private void BookRegisterForm_Load(object sender, EventArgs e)
     {
-        string connStr = ConfigurationManager.ConnectionStrings["LibraryDB"].ConnectionString;
+        string connStr = ConnectionConfig.ConnectionString;
         var factory = new SqlConnectionFactory(connStr);
         var bookRepo = new BookRepository(factory);
         var bookService = new BookService(bookRepo);

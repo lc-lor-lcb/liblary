@@ -7,7 +7,6 @@ using LibrarySystem.Presenter.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -112,7 +111,7 @@ public partial class BookListForm : Form, IBookListView
     private async void BookListForm_Load(object sender, EventArgs e)
     {
         // 接続文字列は App.config の connectionStrings から取得
-        string connStr = ConfigurationManager.ConnectionStrings["LibraryDB"].ConnectionString;
+        string connStr = ConnectionConfig.ConnectionString;
 
         var factory = new SqlConnectionFactory(connStr);
         var bookRepo = new BookRepository(factory);
