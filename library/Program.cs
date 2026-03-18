@@ -4,6 +4,7 @@ using library.Model.Repositories;
 using library.Model.Services;
 using library.Presenter;
 using library.View;
+using library.Views.Interfaces; // 追加
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using System;
@@ -32,8 +33,19 @@ namespace library.UI
                 ConfigureServices(services);
                 var provider = services.BuildServiceProvider();
 
-                var loginForm = provider.GetRequiredService<LoginForm>();
+                // スコープを作成してアプリ終了まで保持する
+                var scope = provider.CreateScope();
+                var scopedProvider = scope.ServiceProvider;
+
+                var loginForm = scopedProvider.GetRequiredService<LoginForm>();
+
+                // 同一スコープ上で Presenter を生成（ILoginView 引数に loginForm を渡す）
+                ActivatorUtilities.CreateInstance<LoginPresenter>(scopedProvider, loginForm);
+
                 Application.Run(loginForm);
+
+                // アプリ終了後にスコープを破棄
+                scope.Dispose();
 
                 Logger.Info("図書管理システム 正常終了");
             }
@@ -86,6 +98,9 @@ namespace library.UI
 
             // --- Views（Forms）---
             services.AddTransient<LoginForm>();
+            // LoginPresenter のコンストラクタが ILoginView を受け取るため、インターフェースをフォームにマップする
+            services.AddTransient<ILoginView, LoginForm>(); // 追加
+
             services.AddTransient<MainForm>();
             services.AddTransient<BookListForm>();
             services.AddTransient<BookRegisterForm>();

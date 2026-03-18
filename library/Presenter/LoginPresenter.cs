@@ -15,9 +15,12 @@ public class LoginPresenter
     {
         _view = view ?? throw new ArgumentNullException(nameof(view));
         _authService = authService ?? throw new ArgumentNullException(nameof(authService));
+
+        // ここを追加
+        _view.LoginClicked += async (s, e) => await OnLoginClickedAsync();
     }
 
-    public async void OnLoginClicked()
+    public async Task OnLoginClickedAsync()
     {
         try
         {
