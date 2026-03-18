@@ -1,110 +1,89 @@
-﻿using library.Model.Services;
-using library.Views.Interfaces;  // ← 修正
-using NLog;
+using LibrarySystem.Model.DTOs;
+using LibrarySystem.Model.Services;
+using LibrarySystem.Presenter.Views;
 
-namespace library.Presenter;
+namespace LibrarySystem.Presenter;
 
+/// <summary>蔵書予約画面Presenter</summary>
 public class ReservationPresenter
 {
-    private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
-
     private readonly IReservationView _view;
     private readonly IReservationService _reservationService;
-    private readonly ILoanService _loanService;
-    private readonly IUserService _userService;
-    private readonly IBookService _bookService;
 
-    public ReservationPresenter(
-        IReservationView view,
-        IReservationService reservationService,
-        ILoanService loanService,
-        IUserService userService,
-        IBookService bookService)
+    /// <summary>貸出画面から遷移した場合の引き継ぎ蔵書ID</summary>
+    private readonly int? _prefilledBookId;
+
+    public ReservationPresenter(IReservationView view, IReservationService reservationService,
+        int? prefilledBookId = null)
     {
-        _view = view ?? throw new ArgumentNullException(nameof(view));
-        _reservationService = reservationService ?? throw new ArgumentNullException(nameof(reservationService));
-        _loanService = loanService ?? throw new ArgumentNullException(nameof(loanService));
-        _userService = userService ?? throw new ArgumentNullException(nameof(userService));
-        _bookService = bookService ?? throw new ArgumentNullException(nameof(bookService));
+        _view = view;
+        _reservationService = reservationService;
+        _prefilledBookId = prefilledBookId;
+
+        _view.ReserveClicked += async (s, e) => await OnReserveClickedAsync();
+        _view.CancelClicked += (s, e) => _view.Close();
     }
 
-    /// <summary>蔵書IDが確定した時点で返却期限日を表示する。</summary>
-    public async void OnBookIdConfirmed()
+    private async Task OnReserveClickedAsync()
     {
         try
         {
-            if (!int.TryParse(_view.BookId, out int bookId) || bookId <= 0)
-                return;
-
-            var log = await _loanService.GetActiveLoanByBookAsync(bookId);
-            _view.ShowReturnDueDate(log?.ReturnDue.ToDateTime(TimeOnly.MinValue));
-        }
-        catch (Exception ex)
-        {
-            Logger.Error(ex, "返却期限日取得中にエラーが発生しました。");
-        }
-    }
-
-    public async void OnReserveClicked()
-    {
-        try
-        {
-            if (!TryParseIds(out int userId, out int bookId))
-                return;
-
-            var user = await _userService.GetByIdAsync(userId);
-            if (user == null || !user.IsActive)
+            if (!TryParseIds(out int userId, out int bookId, out string? parseError))
             {
-                _view.ShowError("利用者IDが見つかりません。受付にお問い合わせください。");
-                return;
-            }
-
-            var book = await _bookService.GetByIdAsync(bookId);
-            if (book == null)
-            {
-                _view.ShowError("蔵書IDが見つかりません。");
-                return;
-            }
-
-            // 重複予約チェック（GetByBookAsync で当該利用者の予約を確認）
-            var existing = await _reservationService.GetByBookAsync(bookId);
-            if (existing != null && existing.UserId == userId)
-            {
-                _view.ShowError("この蔵書はすでに予約済みです。");
+                _view.ShowError(parseError!);
                 return;
             }
 
             var result = await _reservationService.ReserveAsync(bookId, userId);
+
             if (!result.IsSuccess)
             {
-                _view.ShowError(result.ErrorMessage ?? "予約処理に失敗しました。");
+                _view.ShowError(result.ErrorMessage!);
                 return;
             }
 
-            Logger.Info("予約成功: UserId={UserId}, BookId={BookId}", userId, bookId);
-            _view.NavigateToCompletion();
+            // 現在の返却期限日を表示（DateOnly? → IReservationViewへ渡す）
+            _view.ShowReturnDue(result.Value!.CurrentReturnDue);
+
+            _view.NavigateToCompletion(new CompletionViewModel { Message = "操作が完了しました" });
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, "予約処理中にシステムエラーが発生しました。");
+            AppLogger.Error("予約処理中にエラーが発生しました", ex);
             _view.ShowError("システムエラーが発生しました。管理者へご連絡ください。");
         }
     }
 
-    private bool TryParseIds(out int userId, out int bookId)
+    private bool TryParseIds(out int userId, out int bookId, out string? error)
     {
-        userId = 0; bookId = 0;
+        userId = 0; bookId = 0; error = null;
 
         if (string.IsNullOrWhiteSpace(_view.UserId))
-        { _view.ShowError("利用者IDを入力してください。"); return false; }
-        if (!int.TryParse(_view.UserId, out userId) || userId <= 0)
-        { _view.ShowError("利用者IDは正の整数で入力してください。"); return false; }
+        {
+            error = "利用者IDを入力してください。";
+            return false;
+        }
+        if (!int.TryParse(_view.UserId, out userId))
+        {
+            error = "利用者IDは数値で入力してください。";
+            return false;
+        }
 
-        if (string.IsNullOrWhiteSpace(_view.BookId))
-        { _view.ShowError("蔵書IDを入力してください。"); return false; }
-        if (!int.TryParse(_view.BookId, out bookId) || bookId <= 0)
-        { _view.ShowError("蔵書IDは正の整数で入力してください。"); return false; }
+        // 引き継ぎIDがある場合はそちらを優先
+        string bookIdStr = _prefilledBookId.HasValue
+            ? _prefilledBookId.Value.ToString()
+            : _view.BookId;
 
+        if (string.IsNullOrWhiteSpace(bookIdStr))
+        {
+            error = "蔵書IDを入力してください。";
+            return false;
+        }
+        if (!int.TryParse(bookIdStr, out bookId))
+        {
+            error = "蔵書IDは数値で入力してください。";
+            return false;
+        }
         return true;
     }
 }

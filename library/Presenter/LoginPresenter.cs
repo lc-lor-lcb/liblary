@@ -1,50 +1,45 @@
-﻿using library.Model.Services;
-using library.Views.Interfaces;  // ← 修正
-using NLog;
+using LibrarySystem.Model.Services;
+using LibrarySystem.Presenter.Views;
 
-namespace library.Presenter;
+namespace LibrarySystem.Presenter;
 
+/// <summary>ログイン画面Presenter</summary>
 public class LoginPresenter
 {
-    private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
-
     private readonly ILoginView _view;
     private readonly IAuthService _authService;
 
     public LoginPresenter(ILoginView view, IAuthService authService)
     {
-        _view = view ?? throw new ArgumentNullException(nameof(view));
-        _authService = authService ?? throw new ArgumentNullException(nameof(authService));
-
-        // ここを追加
-        _view.LoginClicked += async (s, e) => await OnLoginClickedAsync();
+        _view = view;
+        _authService = authService;
+        _view.LoginClicked += OnLoginClicked;
     }
 
-    public async Task OnLoginClickedAsync()
+    private async void OnLoginClicked(object? sender, EventArgs e)
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(_view.UserName))
-            { _view.ShowError("ログインIDを入力してください。"); return; }
-
-            if (string.IsNullOrWhiteSpace(_view.Password))
-            { _view.ShowError("パスワードを入力してください。"); return; }
-
-            var librarian = await _authService.LoginAsync(_view.UserName, _view.Password);
-
-            if (librarian == null)
+            // 空チェック
+            if (string.IsNullOrWhiteSpace(_view.UserName) || string.IsNullOrWhiteSpace(_view.Password))
             {
-                _view.ShowError("IDまたはパスワードが正しくありません。");
-                Logger.Warn("ログイン失敗: UserName={UserName}", _view.UserName);
+                _view.ShowError("ログインIDとパスワードを入力してください。");
                 return;
             }
 
-            Logger.Info("ログイン成功: UserName={UserName}", librarian.UserName);
+            var result = await _authService.LoginAsync(_view.UserName, _view.Password);
+
+            if (!result.IsSuccess)
+            {
+                _view.ShowError(result.ErrorMessage!);
+                return;
+            }
+
             _view.NavigateToMain();
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, "ログイン処理中にシステムエラーが発生しました。");
+            AppLogger.Error("ログイン処理中にエラーが発生しました", ex);
             _view.ShowError("システムエラーが発生しました。管理者へご連絡ください。");
         }
     }

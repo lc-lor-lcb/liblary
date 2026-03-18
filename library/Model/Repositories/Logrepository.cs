@@ -1,166 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Dapper;
-using library.Model;
-using library.Model.Entities;
-using library.Model.Repositories;
+using LibrarySystem.Infrastructure;
+using LibrarySystem.Model.Entities;
 
-namespace library.Model.Repositories;
+namespace LibrarySystem.Model.Repositories;
 
-/// <summary>
-/// 貸出ログデータアクセス実装（Dapper）
-/// </summary>
-public sealed class LogRepository : ILogRepository  // ★ 修正: Ilogrepository → ILogRepository
+public class LogRepository : ILogRepository
 {
-    private readonly IDbConnectionFactory _connectionFactory;
+    private readonly IDbConnectionFactory _factory;
+    public LogRepository(IDbConnectionFactory factory) => _factory = factory;
 
-    public LogRepository(IDbConnectionFactory connectionFactory)
-    {
-        _connectionFactory = connectionFactory;
-    }
-
-    // -------------------------------------------------------------------------
-    // InsertAsync
-    // -------------------------------------------------------------------------
-    public async Task<long> InsertAsync(Log log)
+    public async Task<Log?> GetActiveLoanAsync(int bookId, int userId)
     {
         const string sql = @"
-            INSERT INTO logs (User_id, Book_id, LoanDate, ReturnDue, ReturnDate)
-            OUTPUT INSERTED.ID
-            VALUES (@UserId, @BookId, @LoanDate, @ReturnDue, @ReturnDate)";
-
-        using var conn = _connectionFactory.Create();
-        return await conn.ExecuteScalarAsync<long>(sql, new
-        {
-            UserId = log.UserId,
-            BookId = log.BookId,
-            LoanDate = log.LoanDate,
-            ReturnDue = log.ReturnDue,
-            ReturnDate = log.ReturnDate
-        });
+            SELECT ID, User_id, Book_id, LoanDate, ReturnDue, ReturnDate
+            FROM logs WHERE Book_id = @BookId AND User_id = @UserId AND ReturnDate IS NULL";
+        using var conn = _factory.CreateConnection();
+        var row = await conn.QuerySingleOrDefaultAsync<LogRow>(sql, new { BookId = bookId, UserId = userId });
+        return row?.ToLog();
     }
 
-    // -------------------------------------------------------------------------
-    // GetActiveLoanAsync
-    // -------------------------------------------------------------------------
-    public async Task<Log?> GetActiveLoanAsync(int userId, int bookId)
+    public async Task<IList<Log>> GetActiveLoansByUserAsync(int userId)
     {
         const string sql = @"
-            SELECT ID, User_id AS UserId, Book_id AS BookId,
-                   LoanDate, ReturnDue, ReturnDate
-            FROM   logs
-            WHERE  User_id    = @UserId
-              AND  Book_id    = @BookId
-              AND  ReturnDate IS NULL";
-
-        using var conn = _connectionFactory.Create();
-        return await conn.QuerySingleOrDefaultAsync<Log>(sql, new { UserId = userId, BookId = bookId });
+            SELECT ID, User_id, Book_id, LoanDate, ReturnDue, ReturnDate
+            FROM logs WHERE User_id = @UserId AND ReturnDate IS NULL";
+        using var conn = _factory.CreateConnection();
+        var rows = await conn.QueryAsync<LogRow>(sql, new { UserId = userId });
+        return rows.Select(r => r.ToLog()).ToList();
     }
 
-    // -------------------------------------------------------------------------
-    // GetActiveLoanCountAsync
-    // -------------------------------------------------------------------------
-    public async Task<int> GetActiveLoanCountAsync(int userId)
+    public async Task<int> CountActiveLoansByUserAsync(int userId)
     {
-        const string sql = @"
-            SELECT COUNT(*)
-            FROM   logs
-            WHERE  User_id    = @UserId
-              AND  ReturnDate IS NULL";
-
-        using var conn = _connectionFactory.Create();
+        const string sql = "SELECT COUNT(*) FROM logs WHERE User_id = @UserId AND ReturnDate IS NULL";
+        using var conn = _factory.CreateConnection();
         return await conn.ExecuteScalarAsync<int>(sql, new { UserId = userId });
     }
 
-    // -------------------------------------------------------------------------
-    // GetActiveLoansAsync
-    // -------------------------------------------------------------------------
-    public async Task<IList<Log>> GetActiveLoansAsync(int userId)
+    public async Task<bool> HasOverdueLoanAsync(int userId)
     {
         const string sql = @"
-            SELECT ID, User_id AS UserId, Book_id AS BookId,
-                   LoanDate, ReturnDue, ReturnDate
-            FROM   logs
-            WHERE  User_id    = @UserId
-              AND  ReturnDate IS NULL
-            ORDER BY LoanDate DESC";
-
-        using var conn = _connectionFactory.Create();
-        var result = await conn.QueryAsync<Log>(sql, new { UserId = userId });
-        return result.AsList();
+            SELECT COUNT(1) FROM logs
+            WHERE User_id = @UserId AND ReturnDate IS NULL AND ReturnDue < CAST(GETDATE() AS DATE)";
+        using var conn = _factory.CreateConnection();
+        return await conn.ExecuteScalarAsync<int>(sql, new { UserId = userId }) > 0;
     }
 
-    // -------------------------------------------------------------------------
-    // HasOverdueAsync
-    // -------------------------------------------------------------------------
-    public async Task<bool> HasOverdueAsync(int userId)
+    public async Task<long> InsertAsync(Log log)
     {
         const string sql = @"
-            SELECT CASE WHEN EXISTS (
-                SELECT 1
-                FROM   logs
-                WHERE  User_id    = @UserId
-                  AND  ReturnDate IS NULL
-                  AND  ReturnDue  < CAST(GETDATE() AS DATE)
-            ) THEN 1 ELSE 0 END";
-
-        using var conn = _connectionFactory.Create();
-        return await conn.ExecuteScalarAsync<bool>(sql, new { UserId = userId });
+            INSERT INTO logs (User_id, Book_id, LoanDate, ReturnDue)
+            VALUES (@User_id, @Book_id, @LoanDate, @ReturnDue);
+            SELECT CAST(SCOPE_IDENTITY() AS BIGINT);";
+        using var conn = _factory.CreateConnection();
+        return await conn.ExecuteScalarAsync<long>(sql, new
+        {
+            log.User_id, log.Book_id, log.LoanDate,
+            ReturnDue = log.ReturnDue.ToDateTime(TimeOnly.MinValue)
+        });
     }
 
-    // -------------------------------------------------------------------------
-    // ReturnAsync
-    // -------------------------------------------------------------------------
-    public async Task ReturnAsync(long logId, DateTime returnDate)
+    public async Task SetReturnDateAsync(long logId, DateTime returnDate)
     {
-        const string sql = @"
-            UPDATE logs
-            SET    ReturnDate = @ReturnDate
-            WHERE  ID = @LogId";
-
-        using var conn = _connectionFactory.Create();
-        await conn.ExecuteAsync(sql, new { LogId = logId, ReturnDate = returnDate });
+        const string sql = "UPDATE logs SET ReturnDate = @ReturnDate WHERE ID = @ID";
+        using var conn = _factory.CreateConnection();
+        await conn.ExecuteAsync(sql, new { ReturnDate = returnDate, ID = logId });
     }
 
-    // -------------------------------------------------------------------------
-    // GetReturnDueByBookIdAsync  ★ v1.1追加メソッド
-    // ReservationService.GetReturnDueByBookAsync から呼び出される。
-    // 指定蔵書の貸出中レコード（ReturnDate IS NULL）の返却期限日を返す。
-    // 複数レコードが存在する場合は最新の LoanDate のものを返す。
-    // -------------------------------------------------------------------------
-    public async Task<DateOnly?> GetReturnDueByBookIdAsync(int bookId)
+    public async Task<DateOnly?> GetCurrentReturnDueAsync(int bookId)
     {
-        const string sql = @"
-            SELECT TOP 1 ReturnDue
-            FROM   logs
-            WHERE  Book_id    = @BookId
-              AND  ReturnDate IS NULL
-            ORDER BY LoanDate DESC";
-
-        using var conn = _connectionFactory.Create();
-        // SQL Server の DATE 型は Dapper で DateOnly にマップされる (.NET 6+)
-        var result = await conn.ExecuteScalarAsync<DateOnly?>(sql, new { BookId = bookId });
-        return result;
+        const string sql = "SELECT TOP 1 ReturnDue FROM logs WHERE Book_id = @BookId AND ReturnDate IS NULL";
+        using var conn = _factory.CreateConnection();
+        var dt = await conn.ExecuteScalarAsync<DateTime?>(sql, new { BookId = bookId });
+        return dt.HasValue ? DateOnly.FromDateTime(dt.Value) : null;
     }
 
-    // -------------------------------------------------------------------------
-    // GetActiveLoanByBookAsync  ★ インターフェース追加メソッド
-    // 指定蔵書の貸出中レコード（ReturnDate IS NULL）を返す。
-    // 複数レコードが存在する場合は最新の LoanDate のものを返す。
-    // -------------------------------------------------------------------------
-    public async Task<Log?> GetActiveLoanByBookAsync(int bookId)
+    private class LogRow
     {
-        const string sql = @"
-            SELECT TOP 1
-                   ID, User_id AS UserId, Book_id AS BookId,
-                   LoanDate, ReturnDue, ReturnDate
-            FROM   logs
-            WHERE  Book_id    = @BookId
-              AND  ReturnDate IS NULL
-            ORDER BY LoanDate DESC";
+        public long ID { get; set; }
+        public int User_id { get; set; }
+        public int Book_id { get; set; }
+        public DateTime LoanDate { get; set; }
+        public DateTime ReturnDue { get; set; }
+        public DateTime? ReturnDate { get; set; }
 
-        using var conn = _connectionFactory.Create();
-        return await conn.QuerySingleOrDefaultAsync<Log>(sql, new { BookId = bookId });
+        public Log ToLog() => new()
+        {
+            ID = ID, User_id = User_id, Book_id = Book_id,
+            LoanDate = LoanDate,
+            ReturnDue = DateOnly.FromDateTime(ReturnDue),
+            ReturnDate = ReturnDate
+        };
     }
 }

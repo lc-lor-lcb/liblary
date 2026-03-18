@@ -1,42 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+namespace LibrarySystem.Model.Entities;
 
-namespace library.Model.Entities;
-
-/// <summary>
-/// 貸出ログエンティティ
-/// </summary>
+/// <summary>貸出ログエンティティ</summary>
 public class Log
 {
-    /// <summary>ログID（自動採番）</summary>
-    public long Id { get; set; }
-
-    /// <summary>利用者ID（FK → users）</summary>
-    public int UserId { get; set; }
-
-    /// <summary>蔵書ID（FK → books）</summary>
-    public int BookId { get; set; }
-
-    /// <summary>貸出日時</summary>
+    public long ID { get; set; }
+    public int User_id { get; set; }
+    public int Book_id { get; set; }
     public DateTime LoanDate { get; set; }
-
-    /// <summary>返却期限日（貸出日 + 14日）</summary>
     public DateOnly ReturnDue { get; set; }
-
-    /// <summary>
-    /// 実返却日時
-    /// null = 貸出中
-    /// </summary>
     public DateTime? ReturnDate { get; set; }
 
-    // ナビゲーションプロパティ（任意でロード）
-    public User? User { get; set; }
-    public Book? Book { get; set; }
+    /// <summary>返却済みかどうか</summary>
+    public bool IsReturned => ReturnDate.HasValue;
+}
 
-    /// <summary>現在貸出中かどうか</summary>
-    public bool IsActive => ReturnDate is null;
+/// <summary>予約ステータス</summary>
+public enum ReservationStatus : byte
+{
+    Active = 0,   // 有効
+    Fulfilled = 1, // 貸出済
+    Cancelled = 2  // キャンセル
+}
 
-    /// <summary>延滞中かどうか</summary>
-    public bool IsOverdue => IsActive && ReturnDue < DateOnly.FromDateTime(DateTime.Today);
+/// <summary>予約エンティティ</summary>
+public class Reservation
+{
+    public int ID { get; set; }
+    public int User_id { get; set; }
+    public int Book_id { get; set; }
+    public DateTime ReservationDate { get; set; }
+    public ReservationStatus Status { get; set; } = ReservationStatus.Active;
+    public bool Notified { get; set; }
 }
