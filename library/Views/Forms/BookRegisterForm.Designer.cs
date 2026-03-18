@@ -174,7 +174,7 @@
 
         private void txtISBN_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void txtPublisher_TextChanged(object sender, EventArgs e)
