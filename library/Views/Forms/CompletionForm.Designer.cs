@@ -35,7 +35,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(340, 209);
+            btnBack.Location = new Point(61, 63);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(75, 23);
             btnBack.TabIndex = 0;
@@ -45,7 +45,7 @@
             // lblMessage
             // 
             lblMessage.AutoSize = true;
-            lblMessage.Location = new Point(340, 130);
+            lblMessage.Location = new Point(61, 29);
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new Size(67, 15);
             lblMessage.TabIndex = 2;
@@ -55,7 +55,7 @@
             // lblCountdown
             // 
             lblCountdown.AutoSize = true;
-            lblCountdown.Location = new Point(312, 235);
+            lblCountdown.Location = new Point(33, 89);
             lblCountdown.Name = "lblCountdown";
             lblCountdown.Size = new Size(137, 15);
             lblCountdown.TabIndex = 3;

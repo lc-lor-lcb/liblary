@@ -38,32 +38,30 @@
             // 
             // txtUserId
             // 
-            txtUserId.Location = new Point(278, 172);
+            txtUserId.Location = new Point(32, 37);
             txtUserId.Name = "txtUserId";
             txtUserId.Size = new Size(100, 23);
             txtUserId.TabIndex = 0;
-            txtUserId.Text = "txtUserId";
+            txtUserId.TextChanged += txtUserId_TextChanged;
             // 
             // txtBookId
             // 
-            txtBookId.Location = new Point(423, 172);
+            txtBookId.Location = new Point(177, 37);
             txtBookId.Name = "txtBookId";
             txtBookId.Size = new Size(100, 23);
             txtBookId.TabIndex = 1;
-            txtBookId.Text = "txtBookId";
             // 
             // lblReturnDue
             // 
             lblReturnDue.AutoSize = true;
-            lblReturnDue.Location = new Point(328, 218);
+            lblReturnDue.Location = new Point(82, 83);
             lblReturnDue.Name = "lblReturnDue";
-            lblReturnDue.Size = new Size(76, 15);
+            lblReturnDue.Size = new Size(0, 15);
             lblReturnDue.TabIndex = 2;
-            lblReturnDue.Text = "lblReturnDue";
             // 
             // btnReserve
             // 
-            btnReserve.Location = new Point(360, 245);
+            btnReserve.Location = new Point(116, 83);
             btnReserve.Name = "btnReserve";
             btnReserve.Size = new Size(75, 23);
             btnReserve.TabIndex = 3;
@@ -73,7 +71,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(263, 154);
+            label1.Location = new Point(17, 19);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 5;
@@ -82,7 +80,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(408, 154);
+            label2.Location = new Point(162, 19);
             label2.Name = "label2";
             label2.Size = new Size(42, 15);
             label2.TabIndex = 6;

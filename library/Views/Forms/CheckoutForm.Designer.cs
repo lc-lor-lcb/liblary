@@ -37,23 +37,21 @@
             // 
             // txtUserId
             // 
-            txtUserId.Location = new Point(236, 158);
+            txtUserId.Location = new Point(36, 42);
             txtUserId.Name = "txtUserId";
             txtUserId.Size = new Size(100, 23);
             txtUserId.TabIndex = 0;
-            txtUserId.Text = "txtUserId";
             // 
             // txtBookId
             // 
-            txtBookId.Location = new Point(365, 158);
+            txtBookId.Location = new Point(165, 42);
             txtBookId.Name = "txtBookId";
             txtBookId.Size = new Size(100, 23);
             txtBookId.TabIndex = 1;
-            txtBookId.Text = "txtBookId";
             // 
             // btnCheckout
             // 
-            btnCheckout.Location = new Point(305, 237);
+            btnCheckout.Location = new Point(110, 108);
             btnCheckout.Name = "btnCheckout";
             btnCheckout.Size = new Size(75, 23);
             btnCheckout.TabIndex = 2;
@@ -63,7 +61,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(224, 140);
+            label1.Location = new Point(24, 24);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 3;
@@ -72,7 +70,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(353, 140);
+            label2.Location = new Point(153, 24);
             label2.Name = "label2";
             label2.Size = new Size(42, 15);
             label2.TabIndex = 4;

@@ -55,7 +55,6 @@
             txtSearchName.Name = "txtSearchName";
             txtSearchName.Size = new Size(100, 23);
             txtSearchName.TabIndex = 0;
-            txtSearchName.Text = "txtSearchName";
             // 
             // txtName
             // 
@@ -63,7 +62,6 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(100, 23);
             txtName.TabIndex = 1;
-            txtName.Text = "txtName";
             // 
             // txtBirth
             // 
@@ -71,7 +69,6 @@
             txtBirth.Name = "txtBirth";
             txtBirth.Size = new Size(100, 23);
             txtBirth.TabIndex = 2;
-            txtBirth.Text = "txtBirth";
             // 
             // txtMail
             // 
@@ -79,7 +76,6 @@
             txtMail.Name = "txtMail";
             txtMail.Size = new Size(100, 23);
             txtMail.TabIndex = 3;
-            txtMail.Text = "txtMail";
             // 
             // txtPhone
             // 
@@ -87,7 +83,6 @@
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(100, 23);
             txtPhone.TabIndex = 4;
-            txtPhone.Text = "txtPhone";
             // 
             // txtAddress
             // 
@@ -95,7 +90,6 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(100, 23);
             txtAddress.TabIndex = 5;
-            txtAddress.Text = "txtAddress";
             // 
             // btnSearch
             // 
@@ -209,7 +203,7 @@
             label6.TabIndex = 17;
             label6.Text = "アドレス";
             // 
-            // UsreManageForm
+            // UserManageForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -232,7 +226,7 @@
             Controls.Add(txtBirth);
             Controls.Add(txtName);
             Controls.Add(txtSearchName);
-            Name = "UsreManageForm";
+            Name = "UserManageForm";
             Text = "UsreManageForm";
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ResumeLayout(false);

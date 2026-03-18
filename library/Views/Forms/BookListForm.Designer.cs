@@ -50,7 +50,6 @@
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(100, 23);
             txtTitle.TabIndex = 0;
-            txtTitle.Text = "txtTitle";
             // 
             // txtAuthor
             // 
@@ -58,7 +57,6 @@
             txtAuthor.Name = "txtAuthor";
             txtAuthor.Size = new Size(100, 23);
             txtAuthor.TabIndex = 1;
-            txtAuthor.Text = "txtAuthor";
             // 
             // txtPublisher
             // 
@@ -66,7 +64,6 @@
             txtPublisher.Name = "txtPublisher";
             txtPublisher.Size = new Size(100, 23);
             txtPublisher.TabIndex = 2;
-            txtPublisher.Text = "txtPublisher";
             // 
             // txtGenre
             // 
@@ -74,7 +71,6 @@
             txtGenre.Name = "txtGenre";
             txtGenre.Size = new Size(100, 23);
             txtGenre.TabIndex = 3;
-            txtGenre.Text = "txtGenre";
             // 
             // txtBookId
             // 
@@ -82,7 +78,6 @@
             txtBookId.Name = "txtBookId";
             txtBookId.Size = new Size(100, 23);
             txtBookId.TabIndex = 4;
-            txtBookId.Text = "txtBookId";
             // 
             // clbStatus
             // 

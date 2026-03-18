@@ -44,50 +44,45 @@
             // 
             // txtBookName
             // 
-            txtBookName.Location = new Point(253, 117);
+            txtBookName.Location = new Point(29, 40);
             txtBookName.Name = "txtBookName";
             txtBookName.Size = new Size(100, 23);
             txtBookName.TabIndex = 0;
-            txtBookName.Text = "txtBookName";
             // 
             // txtAuthor
             // 
-            txtAuthor.Location = new Point(253, 173);
+            txtAuthor.Location = new Point(29, 96);
             txtAuthor.Name = "txtAuthor";
             txtAuthor.Size = new Size(100, 23);
             txtAuthor.TabIndex = 1;
-            txtAuthor.Text = "txtAuthor";
             txtAuthor.TextChanged += txtAuthor_TextChanged;
             // 
             // txtPublisher
             // 
-            txtPublisher.Location = new Point(253, 234);
+            txtPublisher.Location = new Point(29, 157);
             txtPublisher.Name = "txtPublisher";
             txtPublisher.Size = new Size(100, 23);
             txtPublisher.TabIndex = 2;
-            txtPublisher.Text = "txtPublisher";
             txtPublisher.TextChanged += txtPublisher_TextChanged;
             // 
             // txtGenre
             // 
-            txtGenre.Location = new Point(372, 117);
+            txtGenre.Location = new Point(148, 40);
             txtGenre.Name = "txtGenre";
             txtGenre.Size = new Size(100, 23);
             txtGenre.TabIndex = 3;
-            txtGenre.Text = "txtGenre";
             // 
             // txtISBN
             // 
-            txtISBN.Location = new Point(372, 172);
+            txtISBN.Location = new Point(148, 95);
             txtISBN.Name = "txtISBN";
             txtISBN.Size = new Size(100, 23);
             txtISBN.TabIndex = 4;
-            txtISBN.Text = "txtISBN";
             txtISBN.TextChanged += txtISBN_TextChanged;
             // 
             // btnRegister
             // 
-            btnRegister.Location = new Point(275, 322);
+            btnRegister.Location = new Point(51, 245);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(75, 23);
             btnRegister.TabIndex = 5;
@@ -96,7 +91,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(372, 322);
+            btnCancel.Location = new Point(148, 245);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 6;
@@ -106,7 +101,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(244, 99);
+            label1.Location = new Point(20, 22);
             label1.Name = "label1";
             label1.Size = new Size(43, 15);
             label1.TabIndex = 7;
@@ -115,7 +110,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(244, 155);
+            label2.Location = new Point(20, 78);
             label2.Name = "label2";
             label2.Size = new Size(31, 15);
             label2.TabIndex = 8;
@@ -124,7 +119,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(244, 216);
+            label3.Location = new Point(20, 139);
             label3.Name = "label3";
             label3.Size = new Size(43, 15);
             label3.TabIndex = 9;
@@ -133,7 +128,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(359, 99);
+            label4.Location = new Point(135, 22);
             label4.Name = "label4";
             label4.Size = new Size(44, 15);
             label4.TabIndex = 10;
@@ -142,7 +137,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(359, 155);
+            label5.Location = new Point(135, 78);
             label5.Name = "label5";
             label5.Size = new Size(32, 15);
             label5.TabIndex = 11;

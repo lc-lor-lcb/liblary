@@ -58,4 +58,9 @@ public partial class ReturnForm : Form, IReturnView
 
         _ = new ReturnPresenter(this, loanService);
     }
+
+    private void txtUserId_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

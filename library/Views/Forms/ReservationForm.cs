@@ -84,4 +84,9 @@ public partial class ReservationForm : Form, IReservationView
 
         _ = new ReservationPresenter(this, reservationService, _prefilledBookId);
     }
-}   
+
+    private void txtUserId_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+}

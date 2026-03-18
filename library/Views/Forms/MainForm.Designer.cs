@@ -40,13 +40,12 @@
             lblLibrarianName.AutoSize = true;
             lblLibrarianName.Location = new Point(12, 9);
             lblLibrarianName.Name = "lblLibrarianName";
-            lblLibrarianName.Size = new Size(97, 15);
+            lblLibrarianName.Size = new Size(0, 15);
             lblLibrarianName.TabIndex = 0;
-            lblLibrarianName.Text = "lblLibrarianName";
             // 
             // btnBookList
             // 
-            btnBookList.Location = new Point(43, 101);
+            btnBookList.Location = new Point(15, 28);
             btnBookList.Name = "btnBookList";
             btnBookList.Size = new Size(131, 42);
             btnBookList.TabIndex = 1;
@@ -55,7 +54,7 @@
             // 
             // btnBookRegister
             // 
-            btnBookRegister.Location = new Point(205, 101);
+            btnBookRegister.Location = new Point(177, 28);
             btnBookRegister.Name = "btnBookRegister";
             btnBookRegister.Size = new Size(131, 42);
             btnBookRegister.TabIndex = 2;
@@ -64,7 +63,7 @@
             // 
             // btnUserManage
             // 
-            btnUserManage.Location = new Point(365, 101);
+            btnUserManage.Location = new Point(337, 28);
             btnUserManage.Name = "btnUserManage";
             btnUserManage.Size = new Size(131, 42);
             btnUserManage.TabIndex = 3;
@@ -73,7 +72,7 @@
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(528, 101);
+            btnLogout.Location = new Point(500, 28);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(131, 42);
             btnLogout.TabIndex = 4;
