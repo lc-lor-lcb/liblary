@@ -27,11 +27,7 @@ public class BookListPresenter
     /// <summary>画面起動時に全件検索して表示</summary>
     public async Task InitializeAsync()
     {
-        if (!_session.ValidateSession())
-        {
-            // セッション切れ→ログイン画面へは MainPresenter が制御するため、ここでは何もしない
-            return;
-        }
+        if (!_session.ValidateSession()) return;
         await SearchAsync(resetPage: true);
     }
 

@@ -86,7 +86,7 @@ public interface IReservationView
     event EventHandler ReserveClicked;
     event EventHandler CancelClicked;
     void ShowError(string message);
-    void ShowReturnDue(Model.Entities.DateOnly? returnDue);
+    void ShowReturnDue(DateOnly? returnDue);
     void NavigateToCompletion(Model.DTOs.CompletionViewModel vm);
     void Close();
 }
