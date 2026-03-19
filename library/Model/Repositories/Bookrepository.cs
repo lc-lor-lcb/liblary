@@ -53,7 +53,7 @@ public class BookRepository : IBookRepository
             if (criteria.Statuses.Count > 0)
             {
                 sb.Append(" AND b.Status IN @Statuses");
-                p.Add("Statuses", criteria.Statuses.Select(s => (byte)s).ToArray());
+                p.Add("Statuses", criteria.Statuses.Select(s => (byte)s).ToList());
             }
         }
 

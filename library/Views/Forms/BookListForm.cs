@@ -25,7 +25,7 @@ public partial class BookListForm : Form, IBookListView
     public string SearchBookId => txtBookId.Text.Trim();
 
     public IList<int> SelectedStatuses =>
-        clbStatus.CheckedIndices.Cast<int>().ToList();
+        clbStatus.CheckedIndices.OfType<int>().ToList();
 
     // インターフェースの int CurrentPage { get; set; } はフィールドで保持する
     // [DesignerSerializationVisibility(Hidden)] でデザイナのシリアル化対象から除外
@@ -110,9 +110,62 @@ public partial class BookListForm : Form, IBookListView
     // -------------------------------------------------------
     private async void BookListForm_Load(object sender, EventArgs e)
     {
-        // 接続文字列は App.config の connectionStrings から取得
-        string connStr = ConnectionConfig.ConnectionString;
+        // ── DataGridView の列定義 ──────────────────────────────
+        dgvBooks.AutoGenerateColumns = false;
+        dgvBooks.Columns.Clear();
 
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colId",
+            HeaderText = "ID",
+            Width = 50,
+            ReadOnly = true,
+        });
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colBookName",
+            HeaderText = "タイトル",
+            Width = 180,
+            ReadOnly = true,
+        });
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colAuthor",
+            HeaderText = "著者",
+            Width = 120,
+            ReadOnly = true,
+        });
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colPublisher",
+            HeaderText = "出版社",
+            Width = 120,
+            ReadOnly = true,
+        });
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colGenre",
+            HeaderText = "ジャンル",
+            Width = 100,
+            ReadOnly = true,
+        });
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colStatus",
+            HeaderText = "状態",
+            Width = 70,
+            ReadOnly = true,
+        });
+        dgvBooks.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "colReturnDue",
+            HeaderText = "返却期限",
+            Width = 90,
+            ReadOnly = true,
+        });
+
+        // ── Presenter 初期化（ここで ShowBooks が呼ばれる）──────
+        string connStr = ConnectionConfig.ConnectionString;
         var factory = new SqlConnectionFactory(connStr);
         var bookRepo = new BookRepository(factory);
         var bookService = new BookService(bookRepo);

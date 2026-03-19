@@ -33,7 +33,6 @@
             txtPublisher = new TextBox();
             txtGenre = new TextBox();
             txtBookId = new TextBox();
-            clbStatus = new CheckedListBox();
             btnSearch = new Button();
             dgvBooks = new DataGridView();
             label1 = new Label();
@@ -41,6 +40,7 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            clbStatus = new CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             SuspendLayout();
             // 
@@ -79,17 +79,9 @@
             txtBookId.Size = new Size(100, 23);
             txtBookId.TabIndex = 4;
             // 
-            // clbStatus
-            // 
-            clbStatus.FormattingEnabled = true;
-            clbStatus.Location = new Point(315, 114);
-            clbStatus.Name = "clbStatus";
-            clbStatus.Size = new Size(120, 94);
-            clbStatus.TabIndex = 5;
-            // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(315, 60);
+            btnSearch.Location = new Point(295, 52);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(120, 23);
             btnSearch.TabIndex = 6;
@@ -99,9 +91,12 @@
             // 
             // dgvBooks
             // 
+            dgvBooks.AllowUserToAddRows = false;
+            dgvBooks.AllowUserToDeleteRows = false;
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBooks.Location = new Point(12, 229);
             dgvBooks.Name = "dgvBooks";
+            dgvBooks.ReadOnly = true;
             dgvBooks.Size = new Size(776, 209);
             dgvBooks.TabIndex = 7;
             // 
@@ -151,11 +146,21 @@
             label5.TabIndex = 12;
             label5.Text = "ID";
             // 
+            // clbStatus
+            // 
+            clbStatus.FormattingEnabled = true;
+            clbStatus.Items.AddRange(new object[] { "在庫", "貸出中", "予約済", "除籍" });
+            clbStatus.Location = new Point(295, 132);
+            clbStatus.Name = "clbStatus";
+            clbStatus.Size = new Size(120, 76);
+            clbStatus.TabIndex = 13;
+            // 
             // BookListForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(clbStatus);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -163,7 +168,6 @@
             Controls.Add(label1);
             Controls.Add(dgvBooks);
             Controls.Add(btnSearch);
-            Controls.Add(clbStatus);
             Controls.Add(txtBookId);
             Controls.Add(txtGenre);
             Controls.Add(txtPublisher);
@@ -184,7 +188,6 @@
         private TextBox txtPublisher;
         private TextBox txtGenre;
         private TextBox txtBookId;
-        private CheckedListBox clbStatus;
         private Button btnSearch;
         private DataGridView dgvBooks;
         private Label label1;
@@ -192,5 +195,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private CheckedListBox clbStatus;
     }
 }
