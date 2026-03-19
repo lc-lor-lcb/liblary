@@ -71,7 +71,7 @@
             Controls.Add(lblMessage);
             Controls.Add(btnBack);
             Name = "CompletionForm";
-            Text = "CompletionForm";
+            Text = "完了";
             Load += CompletionForm_Load;
             ResumeLayout(false);
             PerformLayout();

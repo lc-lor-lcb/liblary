@@ -123,7 +123,7 @@
             Controls.Add(lblTitle);
             Controls.Add(btnLogin);
             Name = "LoginForm";
-            Text = "LoginForm";
+            Text = "ログイン画面";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -227,7 +227,7 @@
             Controls.Add(txtName);
             Controls.Add(txtSearchName);
             Name = "UserManageForm";
-            Text = "UsreManageForm";
+            Text = "利用者管理画面";
             Load += UserManageForm_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ResumeLayout(false);

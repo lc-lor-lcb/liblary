@@ -98,7 +98,7 @@
             Controls.Add(txtBookId);
             Controls.Add(txtUserId);
             Name = "ReservationForm";
-            Text = "ReservationForm";
+            Text = "予約画面";
             Load += ReservationForm_Load;
             ResumeLayout(false);
             PerformLayout();

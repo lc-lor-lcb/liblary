@@ -33,6 +33,8 @@
             btnBookRegister = new Button();
             btnUserManage = new Button();
             btnLogout = new Button();
+            btnCheckout = new Button();
+            btnReturn = new Button();
             SuspendLayout();
             // 
             // lblLibrarianName
@@ -54,7 +56,7 @@
             // 
             // btnBookRegister
             // 
-            btnBookRegister.Location = new Point(177, 28);
+            btnBookRegister.Location = new Point(15, 101);
             btnBookRegister.Name = "btnBookRegister";
             btnBookRegister.Size = new Size(131, 42);
             btnBookRegister.TabIndex = 2;
@@ -63,7 +65,7 @@
             // 
             // btnUserManage
             // 
-            btnUserManage.Location = new Point(337, 28);
+            btnUserManage.Location = new Point(15, 178);
             btnUserManage.Name = "btnUserManage";
             btnUserManage.Size = new Size(131, 42);
             btnUserManage.TabIndex = 3;
@@ -72,25 +74,45 @@
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(500, 28);
+            btnLogout.Location = new Point(166, 178);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(131, 42);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "ログアウト";
             btnLogout.UseVisualStyleBackColor = true;
             // 
+            // btnCheckout
+            // 
+            btnCheckout.Location = new Point(166, 28);
+            btnCheckout.Name = "btnCheckout";
+            btnCheckout.Size = new Size(131, 42);
+            btnCheckout.TabIndex = 5;
+            btnCheckout.Text = "貸出";
+            btnCheckout.UseVisualStyleBackColor = true;
+            // 
+            // btnReturn
+            // 
+            btnReturn.Location = new Point(166, 101);
+            btnReturn.Name = "btnReturn";
+            btnReturn.Size = new Size(131, 42);
+            btnReturn.TabIndex = 6;
+            btnReturn.Text = "返却";
+            btnReturn.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnReturn);
+            Controls.Add(btnCheckout);
             Controls.Add(btnLogout);
             Controls.Add(btnUserManage);
             Controls.Add(btnBookRegister);
             Controls.Add(btnBookList);
             Controls.Add(lblLibrarianName);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "メインメニュー";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,5 +124,7 @@
         private Button btnBookRegister;
         private Button btnUserManage;
         private Button btnLogout;
+        private Button btnCheckout;
+        private Button btnReturn;
     }
 }

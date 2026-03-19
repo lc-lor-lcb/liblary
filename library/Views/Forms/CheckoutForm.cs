@@ -12,6 +12,11 @@ namespace library.View;
 public partial class CheckoutForm : Form, ICheckoutView
 {
     // -------------------------------------------------------
+    // フィールド追加
+    // -------------------------------------------------------
+    private CheckoutPresenter _presenter = null!; // ← 追加
+
+    // -------------------------------------------------------
     // ICheckoutView プロパティ実装
     // -------------------------------------------------------
     public string UserId => txtUserId.Text.Trim();
@@ -68,6 +73,7 @@ public partial class CheckoutForm : Form, ICheckoutView
         var userRepo = new UserRepository(factory);
         var loanService = new LoanService(bookRepo, logRepo, reservationRepo, userRepo);
 
-        _ = new CheckoutPresenter(this, loanService);
+        _presenter = new CheckoutPresenter(this, loanService);
     }
+
 }

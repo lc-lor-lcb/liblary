@@ -52,7 +52,7 @@ public class CheckoutPresenter
         catch (Exception ex)
         {
             AppLogger.Error("貸出処理中にエラーが発生しました", ex);
-            _view.ShowError("システムエラーが発生しました。管理者へご連絡ください。");
+            _view.ShowError(ex.ToString());
         }
     }
 

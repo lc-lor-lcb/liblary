@@ -174,7 +174,7 @@
             Controls.Add(txtAuthor);
             Controls.Add(txtTitle);
             Name = "BookListForm";
-            Text = "BookListForm";
+            Text = "蔵書一覧画面";
             Load += BookListForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ResumeLayout(false);

@@ -161,7 +161,7 @@
             Controls.Add(txtAuthor);
             Controls.Add(txtBookName);
             Name = "BookRegisterForm";
-            Text = "BookRegisterForm";
+            Text = "蔵書登録画面";
             Load += BookRegisterForm_Load;
             ResumeLayout(false);
             PerformLayout();

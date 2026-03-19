@@ -66,7 +66,7 @@
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 3;
-            label1.Text = "ユーザーID";
+            label1.Text = "利用者ID";
             // 
             // label2
             // 
@@ -88,7 +88,7 @@
             Controls.Add(txtBookId);
             Controls.Add(txtUserId);
             Name = "ReturnForm";
-            Text = "ReturnForm";
+            Text = "返却画面";
             Load += ReturnForm_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -14,6 +14,8 @@ public partial class MainForm : Form, IMainView
     public event EventHandler? BookListMenuClicked;
     public event EventHandler? BookRegisterMenuClicked;
     public event EventHandler? UserManageMenuClicked;
+    public event EventHandler? CheckoutMenuClicked; 
+    public event EventHandler? ReturnMenuClicked;
     public event EventHandler? LogoutMenuClicked;
 
     // -------------------------------------------------------
@@ -25,12 +27,16 @@ public partial class MainForm : Form, IMainView
         btnBookList.Click += (s, e) => BookListMenuClicked?.Invoke(this, EventArgs.Empty);
         btnBookRegister.Click += (s, e) => BookRegisterMenuClicked?.Invoke(this, EventArgs.Empty);
         btnUserManage.Click += (s, e) => UserManageMenuClicked?.Invoke(this, EventArgs.Empty);
+        btnCheckout.Click += (s, e) => CheckoutMenuClicked?.Invoke(this, EventArgs.Empty); 
+        btnReturn.Click += (s, e) => ReturnMenuClicked?.Invoke(this, EventArgs.Empty);
         btnLogout.Click += (s, e) => LogoutMenuClicked?.Invoke(this, EventArgs.Empty);
 
         // ボタンクリックで各画面を直接開く
         BookListMenuClicked += (s, e) => OpenBookList();
         BookRegisterMenuClicked += (s, e) => OpenBookRegister();
         UserManageMenuClicked += (s, e) => OpenUserManage();
+        CheckoutMenuClicked += (s, e) => OpenCheckout();
+        ReturnMenuClicked  += (s, e) => OpenReturn();
         LogoutMenuClicked += (s, e) => NavigateToLogin();
     }
 
@@ -53,6 +59,16 @@ public partial class MainForm : Form, IMainView
     public void OpenUserManage()
     {
         new UserManageForm().Show();
+    }
+
+    public void OpenCheckout()
+    {
+        new CheckoutForm().Show();
+    }
+
+    public void OpenReturn()
+    {
+        new ReturnForm().Show();
     }
 
     public void NavigateToLogin()

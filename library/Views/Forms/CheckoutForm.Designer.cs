@@ -65,7 +65,7 @@
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 3;
-            label1.Text = "ユーザーID";
+            label1.Text = "利用者ID";
             // 
             // label2
             // 
@@ -86,8 +86,10 @@
             Controls.Add(btnCheckout);
             Controls.Add(txtBookId);
             Controls.Add(txtUserId);
+            HelpButton = true;
             Name = "CheckoutForm";
-            Text = "CheckoutForm";
+            Text = "貸出画面";
+            Load += CheckoutForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
