@@ -228,6 +228,7 @@
             Controls.Add(txtSearchName);
             Name = "UserManageForm";
             Text = "UsreManageForm";
+            Load += UserManageForm_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ResumeLayout(false);
             PerformLayout();

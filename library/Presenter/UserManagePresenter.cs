@@ -60,7 +60,7 @@ public class UserManagePresenter
         catch (Exception ex)
         {
             AppLogger.Error("利用者登録中にエラーが発生しました", ex);
-            _view.ShowError("システムエラーが発生しました。管理者へご連絡ください。");
+            _view.ShowError(ex.ToString());
         }
     }
 

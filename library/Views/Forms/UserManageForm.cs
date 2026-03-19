@@ -59,6 +59,7 @@ public partial class UserManageForm : Form, IUserManageView
     public UserManageForm()
     {
         InitializeComponent();
+        Load += UserManageForm_Load;
         btnSearch.Click += (s, e) => SearchClicked?.Invoke(this, EventArgs.Empty);
         btnRegister.Click += (s, e) => RegisterClicked?.Invoke(this, EventArgs.Empty);
         btnUpdate.Click += (s, e) => UpdateClicked?.Invoke(this, EventArgs.Empty);
@@ -124,8 +125,24 @@ public partial class UserManageForm : Form, IUserManageView
     // -------------------------------------------------------
     // フォームイベント（デザイナ生成）
     // -------------------------------------------------------
-    private void UserManageForm_Load(object sender, EventArgs e)
+    private void UserManageForm_Load(object? sender, EventArgs e)
     {
+        // ── DataGridView の列定義 ──────────────────────────────
+        dgvUsers.AutoGenerateColumns = false;
+        dgvUsers.AllowUserToAddRows = false;
+        dgvUsers.AllowUserToDeleteRows = false;
+        dgvUsers.ReadOnly = true;
+        dgvUsers.Columns.Clear();
+
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colId", HeaderText = "ID", Width = 50 });
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colName", HeaderText = "氏名", Width = 120 });
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colGender", HeaderText = "性別", Width = 60 });
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colBirth", HeaderText = "生年月日", Width = 90 });
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colMail", HeaderText = "メール", Width = 180 });
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colPhone", HeaderText = "電話番号", Width = 110 });
+        dgvUsers.Columns.Add(new DataGridViewTextBoxColumn { Name = "colIsActive", HeaderText = "状態", Width = 50 });
+
+        // ── Presenter 初期化 ──────────────────────────────────
         string connStr = ConnectionConfig.ConnectionString;
         var factory = new SqlConnectionFactory(connStr);
         var userRepo = new UserRepository(factory);
@@ -134,5 +151,10 @@ public partial class UserManageForm : Form, IUserManageView
         _ = new UserManagePresenter(this, userService);
     }
 
-    private void label4_Click(object sender, EventArgs e) { }
+    private void label4_Click(object? sender, EventArgs e) { }
+
+    private void UserManageForm_Load_1(object? sender, EventArgs e)
+    {
+
+    }
 }
