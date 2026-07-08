@@ -80,7 +80,7 @@
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(310, 23);
             txtUserName.TabIndex = 4;
-            txtUserName.Text = "admin1";
+            txtUserName.TextChanged += txtUserName_TextChanged;
             // 
             // txtPassword
             // 
@@ -89,7 +89,6 @@
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(310, 23);
             txtPassword.TabIndex = 5;
-            txtPassword.Text = "admin";
             // 
             // label1
             // 
